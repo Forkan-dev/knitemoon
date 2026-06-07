@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - TextileExport Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { transition: all 300ms; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: white; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', system-ui, sans-serif; font-weight: bold; }
+    .btn-primary { padding: 0.75rem 2rem; background-color: #001f3f; color: white; font-weight: 600; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    .btn-primary:hover { background-color: #0d4d2e; }
+    .card-shadow { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    .gradient-text { background: linear-gradient(135deg, #001f3f 0%, #0d4d2e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-padding { padding: 4rem 1rem; }
+    @media (min-width: 768px) { .section-padding { padding: 5rem 2rem; } }
+    .container-max { max-width: 80rem; margin-left: auto; margin-right: auto; }
+    nav { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    input, textarea, select { transition: all 300ms; border: 1px solid #d1d5db; padding: 0.75rem; border-radius: 0.375rem; font-family: inherit; }
+    input:focus, textarea:focus, select:focus { outline: none; box-shadow: 0 0 0 2px #001f3f; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="border-b border-gray-200">
+    <div class="container-max flex items-center justify-between py-4">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-green-800 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold">TE</span>
+        </div>
+        <h1 class="text-xl font-bold text-blue-900">TextileExport Pro</h1>
+      </div>
+      <div class="hidden md:flex gap-8">
+        <a href="index.html" class="font-medium hover:text-blue-900">Home</a>
+        <a href="products.html" class="font-medium hover:text-blue-900">Products</a>
+        <a href="about.html" class="font-medium hover:text-blue-900">About</a>
+        <a href="factory.html" class="font-medium hover:text-blue-900">Factory</a>
+        <a href="contact.html" class="font-medium text-blue-900 font-bold">Contact</a>
+      </div>
+      <button id="mobile-menu-btn" class="md:hidden text-blue-900 text-2xl"><i class="fas fa-bars"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-100 border-t">
+      <div class="flex flex-col gap-4 p-4">
+        <a href="index.html" class="font-medium">Home</a>
+        <a href="products.html" class="font-medium">Products</a>
+        <a href="about.html" class="font-medium">About</a>
+        <a href="factory.html" class="font-medium">Factory</a>
+        <a href="team.html" class="font-medium">Team</a>
+        <a href="gallery.html" class="font-medium">Gallery</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="bg-gradient-to-r from-blue-900 to-green-800 text-white section-padding">
+    <div class="container-max">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Contact Us</h1>
+      <p class="text-lg">Get in touch with our team to discuss your requirements</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section-padding">
+    <div class="container-max">
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Contact Information -->
+        <div>
+          <h2 class="text-2xl font-bold gradient-text mb-8">Contact Information</h2>
+          
+          <div class="mb-8">
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-blue-900 mb-1">Address</h3>
+                <p class="text-gray-600">Savar Industrial Area<br>Dhaka 1340<br>Bangladesh</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-blue-900 mb-1">Phone</h3>
+                <p class="text-gray-600">+880 (1234) 567890<br><a href="tel:+880123456789" class="text-blue-900 hover:text-green-800">Ext: 102</a></p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4 mb-6">
+              <div class="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-blue-900 mb-1">Email</h3>
+                <p class="text-gray-600"><a href="mailto:info@textileexport.com" class="text-blue-900 hover:text-green-800">info@textileexport.com</a><br><a href="mailto:sales@textileexport.com" class="text-blue-900 hover:text-green-800">sales@textileexport.com</a></p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-4">
+              <div class="w-12 h-12 bg-green-700 rounded-lg flex items-center justify-center text-white text-xl flex-shrink-0">
+                <i class="fab fa-whatsapp"></i>
+              </div>
+              <div>
+                <h3 class="font-bold text-blue-900 mb-1">WhatsApp</h3>
+                <p class="text-gray-600"><a href="https://wa.me/8801234567890" target="_blank" class="text-blue-900 hover:text-green-800">+880 1234-567890</a></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Working Hours -->
+          <div class="bg-light-gray p-6 rounded-lg">
+            <h3 class="font-bold text-blue-900 mb-4">Working Hours</h3>
+            <ul class="space-y-2 text-gray-600 text-sm">
+              <li><span class="font-semibold">Monday - Friday:</span> 8:00 AM - 6:00 PM</li>
+              <li><span class="font-semibold">Saturday:</span> 9:00 AM - 2:00 PM</li>
+              <li><span class="font-semibold">Sunday:</span> Closed</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="lg:col-span-2">
+          <h2 class="text-2xl font-bold gradient-text mb-8">Send Us a Message</h2>
+          <form id="contactForm" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold text-blue-900 mb-2">Name *</label>
+                <input type="text" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900" placeholder="Your name">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-blue-900 mb-2">Email *</label>
+                <input type="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900" placeholder="your@email.com">
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm font-semibold text-blue-900 mb-2">Phone *</label>
+                <input type="tel" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900" placeholder="+880 1234-567890">
+              </div>
+              <div>
+                <label class="block text-sm font-semibold text-blue-900 mb-2">Company Name</label>
+                <input type="text" name="company" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900" placeholder="Your company">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-blue-900 mb-2">Subject *</label>
+              <select name="subject" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900">
+                <option value="">Select a subject</option>
+                <option value="product-inquiry">Product Inquiry</option>
+                <option value="quotation">Request Quotation</option>
+                <option value="order">Place an Order</option>
+                <option value="sample">Request Sample</option>
+                <option value="complaint">Complaint</option>
+                <option value="partnership">Partnership</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-blue-900 mb-2">Message *</label>
+              <textarea name="message" rows="6" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-900" placeholder="Tell us more about your inquiry..."></textarea>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <input type="checkbox" id="terms" name="terms" required class="w-4 h-4">
+              <label for="terms" class="text-sm text-gray-600">I agree to the privacy policy and terms of service</label>
+            </div>
+
+            <button type="submit" class="btn-primary w-full">Send Message</button>
+            <p class="text-sm text-gray-600 text-center">We&apos;ll get back to you within 24 hours</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Additional Services -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-max">
+      <h2 class="text-3xl font-bold text-center gradient-text mb-12">How We Can Help</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white p-8 rounded-lg card-shadow text-center">
+          <div class="text-5xl mb-4">📋</div>
+          <h3 class="font-bold text-blue-900 mb-2">Product Inquiries</h3>
+          <p class="text-gray-600 text-sm">Get detailed information about our products, specifications, and customization options</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg card-shadow text-center">
+          <div class="text-5xl mb-4">💰</div>
+          <h3 class="font-bold text-blue-900 mb-2">Bulk Orders</h3>
+          <p class="text-gray-600 text-sm">Competitive pricing for large orders with flexible payment terms</p>
+        </div>
+        <div class="bg-white p-8 rounded-lg card-shadow text-center">
+          <div class="text-5xl mb-4">🎨</div>
+          <h3 class="font-bold text-blue-900 mb-2">Custom Solutions</h3>
+          <p class="text-gray-600 text-sm">Design and produce custom garments tailored to your specifications</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Contact Buttons -->
+  <section class="section-padding">
+    <div class="container-max text-center">
+      <h2 class="text-3xl font-bold gradient-text mb-8">Quick Contact</h2>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="tel:+880123456789" class="px-8 py-3 bg-blue-900 text-white font-semibold rounded-lg hover:bg-green-800 inline-flex items-center gap-2">
+          <i class="fas fa-phone"></i> Call Us
+        </a>
+        <a href="https://wa.me/8801234567890" target="_blank" class="px-8 py-3 bg-green-700 text-white font-semibold rounded-lg hover:bg-green-800 inline-flex items-center gap-2">
+          <i class="fab fa-whatsapp"></i> WhatsApp
+        </a>
+        <a href="mailto:info@textileexport.com" class="px-8 py-3 bg-blue-900 text-white font-semibold rounded-lg hover:bg-green-800 inline-flex items-center gap-2">
+          <i class="fas fa-envelope"></i> Email
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-12">
+    <div class="container-max grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4">TextileExport Pro</h3>
+        <p class="text-gray-300 text-sm">Leading textile manufacturer with global reach.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="index.html" class="hover:text-white">Home</a></li>
+          <li><a href="about.html" class="hover:text-white">About</a></li>
+          <li><a href="products.html" class="hover:text-white">Products</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Company</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="factory.html" class="hover:text-white">Factory</a></li>
+          <li><a href="team.html" class="hover:text-white">Team</a></li>
+          <li><a href="certifications.html" class="hover:text-white">Certifications</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Contact</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li class="flex items-center gap-2"><i class="fas fa-phone"></i> +880 1234-567890</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope"></i> info@textileexport.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-blue-800 pt-8 text-center text-sm text-gray-300">
+      <p>© 2024 TextileExport Pro. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // Form handling
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: formData.get('phone'),
+        company: formData.get('company'),
+        subject: formData.get('subject'),
+        message: formData.get('message')
+      };
+      
+      console.log('Form submitted:', data);
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    });
+  </script>
+</body>
+</html>

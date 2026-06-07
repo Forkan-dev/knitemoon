@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - TextileExport Pro</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { transition: all 300ms; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background-color: white; }
+    h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', system-ui, sans-serif; font-weight: bold; }
+    .btn-primary { padding: 0.75rem 2rem; background-color: #001f3f; color: white; font-weight: 600; border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    .btn-primary:hover { background-color: #0d4d2e; }
+    .card-shadow { box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    .card-shadow:hover { box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15); }
+    .gradient-text { background: linear-gradient(135deg, #001f3f 0%, #0d4d2e 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .section-padding { padding: 4rem 1rem; }
+    @media (min-width: 768px) { .section-padding { padding: 5rem 2rem; } }
+    .container-max { max-width: 80rem; margin-left: auto; margin-right: auto; }
+    nav { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+    .gallery-img { border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); width: 100%; height: 16rem; object-fit: cover; cursor: pointer; transition: transform 300ms; }
+    .gallery-img:hover { transform: scale(1.05); box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15); }
+    .filter-btn { padding: 0.5rem 1rem; background-color: #f3f4f6; color: #001f3f; border: 2px solid transparent; border-radius: 9999px; font-weight: 500; cursor: pointer; transition: all 300ms; }
+    .filter-btn.active { background-color: #001f3f; color: white; }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="border-b border-gray-200">
+    <div class="container-max flex items-center justify-between py-4">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-green-800 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold">TE</span>
+        </div>
+        <h1 class="text-xl font-bold text-blue-900">TextileExport Pro</h1>
+      </div>
+      <div class="hidden md:flex gap-8">
+        <a href="index.html" class="font-medium hover:text-blue-900">Home</a>
+        <a href="products.html" class="font-medium hover:text-blue-900">Products</a>
+        <a href="about.html" class="font-medium hover:text-blue-900">About</a>
+        <a href="factory.html" class="font-medium hover:text-blue-900">Factory</a>
+        <a href="gallery.html" class="font-medium text-blue-900 font-bold">Gallery</a>
+      </div>
+      <a href="contact.html" class="hidden md:block btn-primary text-sm">Contact Us</a>
+      <button id="mobile-menu-btn" class="md:hidden text-blue-900 text-2xl"><i class="fas fa-bars"></i></button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden bg-gray-100 border-t">
+      <div class="flex flex-col gap-4 p-4">
+        <a href="index.html" class="font-medium">Home</a>
+        <a href="products.html" class="font-medium">Products</a>
+        <a href="about.html" class="font-medium">About</a>
+        <a href="factory.html" class="font-medium">Factory</a>
+        <a href="gallery.html" class="font-medium">Gallery</a>
+        <a href="contact.html" class="btn-primary text-center">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="bg-gradient-to-r from-blue-900 to-green-800 text-white section-padding">
+    <div class="container-max">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Our Gallery</h1>
+      <p class="text-lg">Explore our factory, operations, and team</p>
+    </div>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="section-padding bg-gray-50">
+    <div class="container-max">
+      <h2 class="text-2xl font-bold mb-6">Filter by Category</h2>
+      <div class="flex flex-wrap gap-4">
+        <button class="filter-btn active px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('all')">All</button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('factory')">Factory</button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('production')">Production</button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('team')">Team</button>
+        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('events')">Events</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="section-padding">
+    <div class="container-max">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Factory Images -->
+        <img src="https://images.unsplash.com/photo-1554224311-beee415c15e1?w=400&h=300&fit=crop" alt="Factory Overview" class="gallery-img gallery-item" data-category="factory">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Factory Interior" class="gallery-img gallery-item" data-category="factory">
+        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=400&h=300&fit=crop" alt="Warehouse" class="gallery-img gallery-item" data-category="factory">
+
+        <!-- Production Images -->
+        <img src="https://images.unsplash.com/photo-1565710041743-5e95400e9177?w=400&h=300&fit=crop" alt="Production Line" class="gallery-img gallery-item" data-category="production">
+        <img src="https://images.unsplash.com/photo-1586611338391-48e83f5e72e6?w=400&h=300&fit=crop" alt="Quality Control" class="gallery-img gallery-item" data-category="production">
+        <img src="https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400&h=300&fit=crop" alt="Sewing" class="gallery-img gallery-item" data-category="production">
+
+        <!-- Team Images -->
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Team Work" class="gallery-img gallery-item" data-category="team">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Team Meeting" class="gallery-img gallery-item" data-category="team">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop" alt="Team Photo" class="gallery-img gallery-item" data-category="team">
+
+        <!-- Events -->
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Event" class="gallery-img gallery-item" data-category="events">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Conference" class="gallery-img gallery-item" data-category="events">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Celebration" class="gallery-img gallery-item" data-category="events">
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-12">
+    <div class="container-max grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <div>
+        <h3 class="text-lg font-bold mb-4">TextileExport Pro</h3>
+        <p class="text-gray-300 text-sm">Leading textile manufacturer with global reach.</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="index.html" class="hover:text-white">Home</a></li>
+          <li><a href="about.html" class="hover:text-white">About</a></li>
+          <li><a href="contact.html" class="hover:text-white">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Company</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="factory.html" class="hover:text-white">Factory</a></li>
+          <li><a href="team.html" class="hover:text-white">Team</a></li>
+          <li><a href="certifications.html" class="hover:text-white">Certifications</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Contact</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li class="flex items-center gap-2"><i class="fas fa-phone"></i> +880 1234-567890</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope"></i> info@textileexport.com</li>
+        </ul>
+      </div>
+    </div>
+    <div class="border-t border-blue-800 pt-8 text-center text-sm text-gray-300">
+      <p>© 2024 TextileExport Pro. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function filterGallery(category) {
+      const items = document.querySelectorAll('.gallery-item');
+      const buttons = document.querySelectorAll('.filter-btn');
+
+      buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-blue-900', 'text-white', 'border-blue-900');
+        btn.classList.add('bg-white', 'text-blue-900', 'border-blue-900');
+      });
+      event.target.classList.add('active', 'bg-blue-900', 'text-white', 'border-blue-900');
+      event.target.classList.remove('bg-white', 'text-blue-900');
+
+      items.forEach(item => {
+        if (category === 'all' || item.dataset.category === category) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    }
+
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

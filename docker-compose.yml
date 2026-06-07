@@ -1,0 +1,91 @@
+services:
+
+  # ─── PHP-FPM Application ──────────────────────────────────────────────────
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: garment_app
+    restart: unless-stopped
+    working_dir: /var/www
+    volumes:
+      - .:/var/www
+      - ./storage:/var/www/storage
+    environment:
+      APP_ENV: ${APP_ENV:-production}
+      APP_KEY: ${APP_KEY}
+      APP_URL: ${APP_URL:-http://localhost}
+      DB_CONNECTION: mysql
+      DB_HOST: mysql
+      DB_PORT: 3306
+      DB_DATABASE: ${DB_DATABASE:-garments_db}
+      DB_USERNAME: ${DB_USERNAME:-garment_user}
+      DB_PASSWORD: ${DB_PASSWORD:-secret}
+    depends_on:
+      mysql:
+        condition: service_healthy
+    networks:
+      - garment_network
+
+  # ─── Nginx Web Server ─────────────────────────────────────────────────────
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: garment_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - garment_network
+
+  # ─── MySQL Database ───────────────────────────────────────────────────────
+  mysql:
+    image: mysql:8.0
+    container_name: garment_mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootsecret}
+      MYSQL_DATABASE: ${DB_DATABASE:-garments_db}
+      MYSQL_USER: ${DB_USERNAME:-garment_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-secret}
+    volumes:
+      - mysql_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-p${MYSQL_ROOT_PASSWORD:-rootsecret}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - garment_network
+
+  # ─── phpMyAdmin (optional, remove if not needed) ─────────────────────────
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: garment_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_PORT: 3306
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-rootsecret}
+    depends_on:
+      - mysql
+    networks:
+      - garment_network
+
+# ─── Volumes ────────────────────────────────────────────────────────────────
+volumes:
+  mysql_data:
+    driver: local
+
+# ─── Networks ───────────────────────────────────────────────────────────────
+networks:
+  garment_network:
+    driver: bridge

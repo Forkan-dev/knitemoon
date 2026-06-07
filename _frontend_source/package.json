@@ -1,0 +1,12 @@
+{
+  "name": "textile-export-company",
+  "version": "1.0.0",
+  "description": "Premium Textile & Garments Export Company Website",
+  "scripts": {
+    "dev": "npx http-server -p 8080 -o",
+    "build": "npx tailwindcss -i ./src/input.css -o ./dist/style.css"
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.2.0"
+  }
+}

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Premium Textile & Garments Export - Global Manufacturing Excellence</title>
+  <meta name="description" content="Leading textile and garments manufacturer with ISO, BSCI, WRAP, and OEKO-TEX certifications. Export quality products worldwide.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      transition-property: colors, background-color, border-color;
+      transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+      transition-duration: 300ms;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: white;
+      color: #111827;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: bold;
+    }
+
+    .btn-primary {
+      padding: 0.75rem 2rem;
+      background-color: #001f3f;
+      color: white;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 300ms;
+    }
+
+    .btn-primary:hover {
+      background-color: #0d4d2e;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn-secondary {
+      padding: 0.75rem 2rem;
+      background-color: white;
+      color: #001f3f;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      border: 2px solid #001f3f;
+    }
+
+    .btn-secondary:hover {
+      background-color: #f3f4f6;
+    }
+
+    .card-shadow {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-shadow:hover {
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #001f3f 0%, #0d4d2e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .section-padding {
+      padding: 4rem 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .section-padding {
+        padding: 5rem 2rem;
+      }
+    }
+
+    .container-max {
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .slide {
+      transition: opacity 500ms;
+    }
+
+    .slide.hidden {
+      display: none;
+    }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card {
+      transition: transform 300ms;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    [data-animate] {
+      opacity: 0;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    .team-card {
+      transition: all 300ms;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: white;
+    }
+
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
+
+    .cert-badge {
+      transition: transform 300ms;
+    }
+
+    .cert-badge:hover {
+      transform: scale(1.1);
+    }
+
+    .slider-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      background-color: rgba(0, 31, 63, 0.8);
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      transition: all 300ms;
+      font-size: 1.5rem;
+    }
+
+    .slider-btn:hover {
+      background-color: #0d4d2e;
+    }
+
+    .slider-btn.prev-btn {
+      left: 1rem;
+    }
+
+    .slider-btn.next-btn {
+      right: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .slider-btn.prev-btn {
+        left: 2rem;
+      }
+      .slider-btn.next-btn {
+        right: 2rem;
+      }
+    }
+
+    .text-balance {
+      text-wrap: balance;
+    }
+
+    .light-gray {
+      background-color: #f5f5f5;
+    }
+
+    .border-b {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .border-t {
+      border-top: 1px solid #e5e7eb;
+    }
+
+    @media (max-width: 768px) {
+      .mobile-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      
+      .mobile-nav.hidden {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="border-b border-gray-200">
+    <div class="container-max flex items-center justify-between py-4">
+      <div class="flex items-center gap-2">
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-green-800 rounded-lg flex items-center justify-center">
+          <span class="text-white font-bold text-lg">TE</span>
+        </div>
+        <h1 class="text-xl font-bold text-blue-900">TextileExport Pro</h1>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex gap-8">
+        <a href="index.html" class="nav-link font-medium hover:text-blue-900">Home</a>
+        <a href="products.html" class="nav-link font-medium hover:text-blue-900">Products</a>
+        <a href="about.html" class="nav-link font-medium hover:text-blue-900">About</a>
+        <a href="factory.html" class="nav-link font-medium hover:text-blue-900">Factory</a>
+        <a href="team.html" class="nav-link font-medium hover:text-blue-900">Team</a>
+        <a href="gallery.html" class="nav-link font-medium hover:text-blue-900">Gallery</a>
+        <a href="certifications.html" class="nav-link font-medium hover:text-blue-900">Certifications</a>
+      </div>
+
+      <!-- CTA Button -->
+      <a href="contact.html" class="hidden md:block btn-primary text-sm">Contact Us</a>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden text-blue-900 text-2xl">
+        <i class="fas fa-bars"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-light-gray border-t">
+      <div class="flex flex-col gap-4 p-4">
+        <a href="index.html" class="nav-link font-medium">Home</a>
+        <a href="products.html" class="nav-link font-medium">Products</a>
+        <a href="about.html" class="nav-link font-medium">About</a>
+        <a href="factory.html" class="nav-link font-medium">Factory</a>
+        <a href="team.html" class="nav-link font-medium">Team</a>
+        <a href="gallery.html" class="nav-link font-medium">Gallery</a>
+        <a href="certifications.html" class="nav-link font-medium">Certifications</a>
+        <a href="contact.html" class="btn-primary text-center">Contact Us</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Slider Section -->
+  <section id="hero-slider" class="relative w-full h-96 md:h-screen bg-gray-900 overflow-hidden">
+    <!-- Slide 1 -->
+    <div class="slide absolute inset-0 flex items-center justify-center transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=600&fit=crop" alt="Premium Garments Manufacturing" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="container-max text-center text-white z-10 px-4">
+        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-balance">Premium Garments Manufacturing Excellence</h2>
+        <p class="text-lg md:text-xl mb-8 text-balance">Global export quality with ISO and international certifications</p>
+        <a href="contact.html" class="btn-primary inline-block">Explore Products</a>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide hidden absolute inset-0 flex items-center justify-center transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1517256673520-5ba93db77e9e?w=1200&h=600&fit=crop" alt="Professional Textile Manufacturing" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="container-max text-center text-white z-10 px-4">
+        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-balance">Export Quality Standards</h2>
+        <p class="text-lg md:text-xl mb-8 text-balance">Trusted by global brands for over 20 years</p>
+        <a href="products.html" class="btn-primary inline-block">View Products</a>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide hidden absolute inset-0 flex items-center justify-center transition-opacity duration-500">
+      <img src="https://images.unsplash.com/photo-1564622506233-4f6b46b3c58e?w=1200&h=600&fit=crop" alt="Modern Production Facility" class="absolute inset-0 w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/40"></div>
+      <div class="container-max text-center text-white z-10 px-4">
+        <h2 class="text-4xl md:text-6xl font-bold mb-4 text-balance">State-of-the-Art Production</h2>
+        <p class="text-lg md:text-xl mb-8 text-balance">Advanced machinery and skilled workforce ensuring excellence</p>
+        <a href="factory.html" class="btn-primary inline-block">Visit Our Factory</a>
+      </div>
+    </div>
+
+    <!-- Slider Controls -->
+    <button class="slider-btn prev-btn" aria-label="Previous slide">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="slider-btn next-btn" aria-label="Next slide">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+
+    <!-- Slide Indicators -->
+    <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+      <div class="w-3 h-3 bg-white rounded-full opacity-50"></div>
+      <div class="w-3 h-3 bg-white rounded-full opacity-50"></div>
+      <div class="w-3 h-3 bg-white rounded-full opacity-50"></div>
+    </div>
+  </section>
+
+  <!-- Global Clients Section -->
+  <section class="section-padding bg-light-gray">
+    <div class="container-max">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 gradient-text">Our Global Clients</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+        <div class="flex items-center justify-center h-20 bg-white rounded-lg card-shadow">
+          <span class="text-2xl font-bold text-blue-900">ZARA</span>
+        </div>
+        <div class="flex items-center justify-center h-20 bg-white rounded-lg card-shadow">
+          <span class="text-2xl font-bold text-blue-900">H&M</span>
+        </div>
+        <div class="flex items-center justify-center h-20 bg-white rounded-lg card-shadow">
+          <span class="text-2xl font-bold text-blue-900">Uniqlo</span>
+        </div>
+        <div class="flex items-center justify-center h-20 bg-white rounded-lg card-shadow">
+          <span class="text-2xl font-bold text-blue-900">Nike</span>
+        </div>
+        <div class="flex items-center justify-center h-20 bg-white rounded-lg card-shadow">
+          <span class="text-2xl font-bold text-blue-900">Adidas</span>
+        </div>
+        <div class="flex items-center justify-center h-20 bg-white rounded-lg card-shadow">
+          <span class="text-2xl font-bold text-blue-900">GAP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Preview Section -->
+  <section class="section-padding">
+    <div class="container-max">
+      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 gradient-text">Featured Products</h2>
+      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Explore our premium collection of garments manufactured with the highest quality standards</p>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Product 1 -->
+        <div class="product-card rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop" alt="Premium T-Shirt" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Premium T-Shirt</h3>
+            <p class="text-gray-600 text-sm mb-4">100% cotton, comfortable fit, multiple colors available</p>
+            <a href="products.html#tshirts" class="text-blue-900 font-semibold hover:text-green-800">View Details →</a>
+          </div>
+        </div>
+
+        <!-- Product 2 -->
+        <div class="product-card rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400&h=300&fit=crop" alt="Polo Shirt" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Polo Shirt</h3>
+            <p class="text-gray-600 text-sm mb-4">Professional look, breathable fabric, durable construction</p>
+            <a href="products.html#polos" class="text-blue-900 font-semibold hover:text-green-800">View Details →</a>
+          </div>
+        </div>
+
+        <!-- Product 3 -->
+        <div class="product-card rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400&h=300&fit=crop" alt="Hoodie" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Premium Hoodie</h3>
+            <p class="text-gray-600 text-sm mb-4">Comfortable casual wear, premium material blend</p>
+            <a href="products.html#hoodies" class="text-blue-900 font-semibold hover:text-green-800">View Details →</a>
+          </div>
+        </div>
+
+        <!-- Product 4 -->
+        <div class="product-card rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1617944052062-eeb1a8bc0ffd?w=400&h=300&fit=crop" alt="Jacket" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Denim Jacket</h3>
+            <p class="text-gray-600 text-sm mb-4">Classic style, durable denim, timeless design</p>
+            <a href="products.html#jackets" class="text-blue-900 font-semibold hover:text-green-800">View Details →</a>
+          </div>
+        </div>
+
+        <!-- Product 5 -->
+        <div class="product-card rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1542272604-787c62d465d1?w=400&h=300&fit=crop" alt="Denim" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Premium Denim</h3>
+            <p class="text-gray-600 text-sm mb-4">High-quality fabric, perfect fit, versatile style</p>
+            <a href="products.html#denim" class="text-blue-900 font-semibold hover:text-green-800">View Details →</a>
+          </div>
+        </div>
+
+        <!-- Product 6 -->
+        <div class="product-card rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1539533057440-7814a9d4aeb9?w=400&h=300&fit=crop" alt="Sports Wear" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Sports Wear</h3>
+            <p class="text-gray-600 text-sm mb-4">Athletic performance, moisture-wicking fabric</p>
+            <a href="products.html#sports" class="text-blue-900 font-semibold hover:text-green-800">View Details →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="products.html" class="btn-primary">Browse All Products</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Preview Section -->
+  <section class="section-padding bg-light-gray">
+    <div class="container-max">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+        <div>
+          <img src="https://images.unsplash.com/photo-1554224311-beee415c15e1?w=500&h=400&fit=crop" alt="About Factory" class="rounded-lg card-shadow w-full h-96 object-cover">
+        </div>
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">About Our Company</h2>
+          <p class="text-gray-600 mb-4">With over 20 years of experience in textile manufacturing, we've established ourselves as a trusted partner for global brands.</p>
+          <p class="text-gray-600 mb-6">Our state-of-the-art facilities and skilled workforce ensure that every product meets the highest international standards.</p>
+          <div class="grid grid-cols-2 gap-4 mb-8">
+            <div class="bg-white p-4 rounded-lg">
+              <p class="text-3xl font-bold text-blue-900">50+</p>
+              <p class="text-gray-600 text-sm">Countries Served</p>
+            </div>
+            <div class="bg-white p-4 rounded-lg">
+              <p class="text-3xl font-bold text-blue-900">500+</p>
+              <p class="text-gray-600 text-sm">Global Clients</p>
+            </div>
+          </div>
+          <a href="about.html" class="btn-primary">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Factory Highlights Section -->
+  <section class="section-padding">
+    <div class="container-max">
+      <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Factory Highlights</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Highlight 1 -->
+        <div class="rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1565710041743-5e95400e9177?w=400&h=250&fit=crop" alt="Production" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Production Capacity</h3>
+            <p class="text-gray-600 mb-3">500,000+ units per month with full quality control</p>
+            <p class="text-sm text-green-700 font-semibold">✓ State-of-the-art machinery</p>
+          </div>
+        </div>
+
+        <!-- Highlight 2 -->
+        <div class="rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1586611338391-48e83f5e72e6?w=400&h=250&fit=crop" alt="Quality Control" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Quality Control</h3>
+            <p class="text-gray-600 mb-3">Strict testing at every production stage</p>
+            <p class="text-sm text-green-700 font-semibold">✓ International standards compliance</p>
+          </div>
+        </div>
+
+        <!-- Highlight 3 -->
+        <div class="rounded-lg overflow-hidden card-shadow bg-white">
+          <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=250&fit=crop" alt="Compliance" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-blue-900 mb-2">Export Compliance</h3>
+            <p class="text-gray-600 mb-3">Certified for global export requirements</p>
+            <p class="text-sm text-green-700 font-semibold">✓ Full traceability & documentation</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Management Team Section -->
+  <section class="section-padding bg-light-gray">
+    <div class="container-max">
+      <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Management Team</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Team Member 1 -->
+        <div class="team-card text-center bg-white rounded-lg overflow-hidden card-shadow">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop" alt="MD" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-blue-900">Ahmed Hassan</h3>
+            <p class="text-green-700 font-semibold text-sm mb-2">Managing Director</p>
+            <p class="text-gray-600 text-sm">20+ years industry experience</p>
+          </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-card text-center bg-white rounded-lg overflow-hidden card-shadow">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=300&fit=crop" alt="Director" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-blue-900">Fatima Amin</h3>
+            <p class="text-green-700 font-semibold text-sm mb-2">Operations Director</p>
+            <p class="text-gray-600 text-sm">Quality & compliance expert</p>
+          </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-card text-center bg-white rounded-lg overflow-hidden card-shadow">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop" alt="Manager" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-blue-900">Mohammad Khan</h3>
+            <p class="text-green-700 font-semibold text-sm mb-2">Production Manager</p>
+            <p class="text-gray-600 text-sm">15+ years production expertise</p>
+          </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-card text-center bg-white rounded-lg overflow-hidden card-shadow">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop" alt="Manager" class="w-full h-48 object-cover">
+          <div class="p-6">
+            <h3 class="text-lg font-bold text-blue-900">Sarah Ahmed</h3>
+            <p class="text-green-700 font-semibold text-sm mb-2">Export Manager</p>
+            <p class="text-gray-600 text-sm">Global logistics specialist</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center mt-12">
+        <a href="team.html" class="btn-secondary">View Full Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certification Section -->
+  <section class="section-padding">
+    <div class="container-max">
+      <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">International Certifications</h2>
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-6">
+        <div class="cert-badge p-6 bg-light-gray rounded-lg text-center card-shadow">
+          <div class="text-4xl mb-2">🏆</div>
+          <p class="font-bold text-blue-900">ISO 9001</p>
+          <p class="text-sm text-gray-600">Quality Mgmt</p>
+        </div>
+        <div class="cert-badge p-6 bg-light-gray rounded-lg text-center card-shadow">
+          <div class="text-4xl mb-2">✓</div>
+          <p class="font-bold text-blue-900">BSCI</p>
+          <p class="text-sm text-gray-600">Social Audit</p>
+        </div>
+        <div class="cert-badge p-6 bg-light-gray rounded-lg text-center card-shadow">
+          <div class="text-4xl mb-2">♻️</div>
+          <p class="font-bold text-blue-900">WRAP</p>
+          <p class="text-sm text-gray-600">Labor Practice</p>
+        </div>
+        <div class="cert-badge p-6 bg-light-gray rounded-lg text-center card-shadow">
+          <div class="text-4xl mb-2">🌿</div>
+          <p class="font-bold text-blue-900">OEKO-TEX</p>
+          <p class="text-sm text-gray-600">Eco-Friendly</p>
+        </div>
+        <div class="cert-badge p-6 bg-light-gray rounded-lg text-center card-shadow">
+          <div class="text-4xl mb-2">📋</div>
+          <p class="font-bold text-blue-900">ISO 14001</p>
+          <p class="text-sm text-gray-600">Environment</p>
+        </div>
+      </div>
+      <div class="text-center mt-12">
+        <a href="certifications.html" class="btn-primary">View All Certifications</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section-padding bg-light-gray">
+    <div class="container-max">
+      <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Gallery</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+        <img src="https://images.unsplash.com/photo-1554224311-beee415c15e1?w=400&h=300&fit=crop" alt="Factory Floor" class="rounded-lg card-shadow w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+        <img src="https://images.unsplash.com/photo-1565710041743-5e95400e9177?w=400&h=300&fit=crop" alt="Production Line" class="rounded-lg card-shadow w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+        <img src="https://images.unsplash.com/photo-1586611338391-48e83f5e72e6?w=400&h=300&fit=crop" alt="Quality Check" class="rounded-lg card-shadow w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+        <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&h=300&fit=crop" alt="Packaging" class="rounded-lg card-shadow w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+        <img src="https://images.unsplash.com/photo-1556821552-7f41c5d440db?w=400&h=300&fit=crop" alt="Shipment" class="rounded-lg card-shadow w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=400&h=300&fit=crop" alt="Team Event" class="rounded-lg card-shadow w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
+      </div>
+      <div class="text-center">
+        <a href="gallery.html" class="btn-secondary">View Full Gallery</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact CTA Section -->
+  <section class="section-padding bg-gradient-to-r from-blue-900 to-green-800">
+    <div class="container-max text-center text-white">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to Start Your Order?</h2>
+      <p class="text-lg mb-8 text-balance">Connect with our team today for customized solutions and competitive pricing</p>
+      <a href="contact.html" class="inline-block px-12 py-4 bg-white text-blue-900 font-semibold rounded-lg hover:bg-light-gray transition-all duration-300 shadow-lg hover:shadow-xl">
+        Contact Us Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-12">
+    <div class="container-max grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+      <!-- Company Info -->
+      <div>
+        <h3 class="text-lg font-bold mb-4">TextileExport Pro</h3>
+        <p class="text-gray-300 text-sm mb-4">Leading textile manufacturer with global reach and premium quality.</p>
+        <div class="flex gap-4">
+          <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-facebook"></i></a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-linkedin"></i></a>
+          <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-bold mb-4">Quick Links</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="index.html" class="hover:text-white transition-colors">Home</a></li>
+          <li><a href="about.html" class="hover:text-white transition-colors">About Us</a></li>
+          <li><a href="products.html" class="hover:text-white transition-colors">Products</a></li>
+          <li><a href="contact.html" class="hover:text-white transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Products -->
+      <div>
+        <h4 class="font-bold mb-4">Products</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li><a href="products.html" class="hover:text-white transition-colors">T-Shirts</a></li>
+          <li><a href="products.html" class="hover:text-white transition-colors">Polo Shirts</a></li>
+          <li><a href="products.html" class="hover:text-white transition-colors">Hoodies</a></li>
+          <li><a href="products.html" class="hover:text-white transition-colors">Denim</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h4 class="font-bold mb-4">Contact Info</h4>
+        <ul class="space-y-2 text-gray-300 text-sm">
+          <li class="flex items-center gap-2"><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li>
+          <li class="flex items-center gap-2"><i class="fas fa-phone"></i> +880 1234-567890</li>
+          <li class="flex items-center gap-2"><i class="fas fa-envelope"></i> info@textileexport.com</li>
+          <li class="flex items-center gap-2"><i class="fab fa-whatsapp"></i> +880 1234-567890</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-blue-800 pt-8">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm text-gray-300">
+        <p>© 2024 TextileExport Pro. All rights reserved.</p>
+        <div class="flex justify-center gap-6">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        </div>
+        <p class="text-right">Certified & Trusted Manufacturer</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="src/script.js"></script>
+</body>
+</html>

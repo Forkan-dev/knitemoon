@@ -1,0 +1,15 @@
+.git
+.gitignore
+_frontend_source
+node_modules
+docker
+*.md
+.env
+.env.docker
+.env.example
+storage/logs/*.log
+storage/framework/cache/*
+storage/framework/sessions/*
+storage/framework/views/*
+tests
+phpunit.xml
