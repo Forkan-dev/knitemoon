@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Spatie\Sluggable\HasSlug;
 use Spatie\Sluggable\SlugOptions;
@@ -20,6 +21,7 @@ class Page extends Model
         'og_image',
         'status',
         'order',
+        'slider_id',
     ];
 
     protected $casts = [
@@ -31,6 +33,11 @@ class Page extends Model
         return SlugOptions::create()
             ->generateSlugsFrom('name')
             ->saveSlugsTo('slug');
+    }
+
+    public function slider(): BelongsTo
+    {
+        return $this->belongsTo(Slider::class);
     }
 
     public function sections(): BelongsToMany

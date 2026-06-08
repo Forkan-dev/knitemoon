@@ -53,7 +53,26 @@ class PostsRelationManager extends RelationManager
                                     ->maxLength(255)
                                     ->prefix('/')
                                     ->placeholder('auto-generated')
-                                    ->helperText('Auto-filled from title.'),
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'URL identifier — auto-filled from title'),
+
+                                Select::make('type')
+                                    ->options([
+                                        'general'     => 'General',
+                                        'team'        => 'Team Member',
+                                        'product'     => 'Product',
+                                        'service'     => 'Service',
+                                        'feature'     => 'Feature',
+                                        'testimonial' => 'Testimonial',
+                                        'faq'         => 'FAQ',
+                                        'article'     => 'Article',
+                                        'stat'        => 'Statistic',
+                                        'gallery'     => 'Gallery',
+                                    ])
+                                    ->default('general')
+                                    ->required()
+                                    ->native(false)
+                                    ->prefixIcon('heroicon-m-squares-2x2')
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Defines what this post represents — drives frontend rendering'),
 
                                 Select::make('status')
                                     ->options([
@@ -149,6 +168,33 @@ class PostsRelationManager extends RelationManager
                     ->sortable()
                     ->weight('semibold')
                     ->description(fn ($record) => $record->tag ? "#{$record->tag}" : null),
+
+                TextColumn::make('type')
+                    ->badge()
+                    ->color(fn ($state) => match ($state) {
+                        'team'        => 'info',
+                        'product'     => 'success',
+                        'service'     => 'primary',
+                        'feature'     => 'warning',
+                        'testimonial' => 'info',
+                        'faq'         => 'gray',
+                        'article'     => 'primary',
+                        'stat'        => 'success',
+                        'gallery'     => 'warning',
+                        default       => 'gray',
+                    })
+                    ->formatStateUsing(fn ($state) => match ($state) {
+                        'team'        => 'Team Member',
+                        'product'     => 'Product',
+                        'service'     => 'Service',
+                        'feature'     => 'Feature',
+                        'testimonial' => 'Testimonial',
+                        'faq'         => 'FAQ',
+                        'article'     => 'Article',
+                        'stat'        => 'Statistic',
+                        'gallery'     => 'Gallery',
+                        default       => 'General',
+                    }),
 
                 TextColumn::make('status')
                     ->badge()

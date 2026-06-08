@@ -1,35 +1,44 @@
 <?php
 
-namespace App\Filament\Resources\Pages\Tables;
+namespace App\Filament\Resources\Sliders\Tables;
 
 use Filament\Actions\BulkActionGroup;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
+use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 
-class PagesTable
+class SlidersTable
 {
     public static function configure(Table $table): Table
     {
         return $table
             ->columns([
-                TextColumn::make('order')
-                    ->label('#')
-                    ->sortable()
-                    ->width('60px'),
-
                 TextColumn::make('name')
                     ->searchable()
                     ->sortable()
                     ->weight('semibold'),
 
-                TextColumn::make('slug')
-                    ->searchable()
-                    ->prefix('/')
+                TextColumn::make('identifier')
+                    ->prefix('#')
                     ->color('gray'),
+
+                TextColumn::make('effect')
+                    ->badge()
+                    ->color('info'),
+
+                IconColumn::make('autoplay')
+                    ->boolean()
+                    ->label('Auto'),
+
+                TextColumn::make('autoplay_speed')
+                    ->label('Speed')
+                    ->suffix('ms')
+                    ->color('gray')
+                    ->toggleable(),
 
                 TextColumn::make('status')
                     ->badge()
@@ -40,32 +49,28 @@ class PagesTable
                     })
                     ->sortable(),
 
-                TextColumn::make('slider.name')
-                    ->label('Slider')
+                TextColumn::make('items_count')
+                    ->label('Slides')
+                    ->counts('items')
                     ->badge()
-                    ->color('warning')
-                    ->placeholder('—')
-                    ->toggleable(),
+                    ->color('warning'),
 
-                TextColumn::make('sections_count')
-                    ->label('Sections')
-                    ->counts('sections')
+                TextColumn::make('pages_count')
+                    ->label('Pages')
+                    ->counts('pages')
                     ->badge()
-                    ->color('info')
-                    ->sortable(),
-
-                TextColumn::make('updated_at')
-                    ->label('Last updated')
-                    ->since()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->color('info'),
             ])
-            ->defaultSort('order')
             ->filters([
                 SelectFilter::make('status')
                     ->options([
                         'active'   => 'Active',
                         'inactive' => 'Inactive',
+                    ]),
+                SelectFilter::make('effect')
+                    ->options([
+                        'slide' => 'Slide',
+                        'fade'  => 'Fade',
                     ]),
             ])
             ->recordActions([

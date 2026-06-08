@@ -1,17 +1,16 @@
 <?php
 
-namespace App\Filament\Resources\Pages\Pages;
+namespace App\Filament\Resources\Sliders\Pages;
 
-use App\Filament\Resources\Pages\PageResource;
+use App\Filament\Resources\Sliders\SliderResource;
 use Filament\Actions\DeleteAction;
 use Filament\Actions\ViewAction;
 use Filament\Resources\Pages\EditRecord;
 
-class EditPage extends EditRecord
+class EditSlider extends EditRecord
 {
-    protected static string $resource = PageResource::class;
+    protected static string $resource = SliderResource::class;
 
-    // Puts the form and relation managers (Sections) as side-by-side tabs
     public function hasCombinedRelationManagerTabsWithContent(): bool
     {
         return true;
@@ -19,12 +18,12 @@ class EditPage extends EditRecord
 
     public function getContentTabLabel(): ?string
     {
-        return 'Page Details';
+        return 'Slider Settings';
     }
 
     public function getContentTabIcon(): string|\BackedEnum|\Illuminate\Contracts\Support\Htmlable|null
     {
-        return 'heroicon-o-document';
+        return 'heroicon-o-photo';
     }
 
     protected function getHeaderActions(): array

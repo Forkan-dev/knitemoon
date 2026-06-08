@@ -21,8 +21,12 @@ class PostForm
     {
         return $schema
             ->components([
+
+                // ── Assignment ───────────────────────────────────────────────
                 SchemaSection::make('Assignment')
-                    ->description('Which section this post belongs to.')
+                    ->icon('heroicon-o-folder-open')
+                    ->iconColor('primary')
+                    ->columnSpanFull()
                     ->schema([
                         Select::make('section_id')
                             ->label('Section')
@@ -31,9 +35,14 @@ class PostForm
                             ->preload()
                             ->required()
                             ->native(false)
-                            ->helperText('The section this post lives under. Sections are assigned to pages via the Pages resource.'),
+                            ->prefixIcon('heroicon-m-view-columns')
+                            ->hintIcon('heroicon-m-information-circle', tooltip: 'The section this post belongs to — sections are assigned to pages via the Pages resource')
+                            ->validationMessages([
+                                'required' => 'A section must be selected.',
+                            ]),
                     ]),
 
+                // ── Tabs ─────────────────────────────────────────────────────
                 Tabs::make()
                     ->tabs([
                         Tab::make('Content')
@@ -43,11 +52,15 @@ class PostForm
                                 TextInput::make('title')
                                     ->required()
                                     ->maxLength(255)
+                                    ->prefixIcon('heroicon-m-pencil')
                                     ->placeholder('Post title')
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'The main heading of this post')
                                     ->live(onBlur: true)
-                                    ->afterStateUpdated(function ($state, $set) {
-                                        $set('slug', Str::slug($state));
-                                    })
+                                    ->afterStateUpdated(fn ($state, $set) => $set('slug', Str::slug($state)))
+                                    ->validationMessages([
+                                        'required' => 'Post title is required.',
+                                        'max'      => 'Title cannot exceed :max characters.',
+                                    ])
                                     ->columnSpanFull(),
 
                                 TextInput::make('slug')
@@ -55,7 +68,30 @@ class PostForm
                                     ->maxLength(255)
                                     ->prefix('/')
                                     ->placeholder('auto-generated-from-title')
-                                    ->helperText('Auto-filled from title. Edit only if needed.'),
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'URL identifier — auto-filled from title, editable')
+                                    ->validationMessages([
+                                        'unique' => 'This slug is already in use.',
+                                        'max'    => 'Slug cannot exceed :max characters.',
+                                    ]),
+
+                                Select::make('type')
+                                    ->options([
+                                        'general'     => 'General',
+                                        'team'        => 'Team Member',
+                                        'product'     => 'Product',
+                                        'service'     => 'Service',
+                                        'feature'     => 'Feature',
+                                        'testimonial' => 'Testimonial',
+                                        'faq'         => 'FAQ',
+                                        'article'     => 'Article',
+                                        'stat'        => 'Statistic',
+                                        'gallery'     => 'Gallery',
+                                    ])
+                                    ->default('general')
+                                    ->required()
+                                    ->native(false)
+                                    ->prefixIcon('heroicon-m-squares-2x2')
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Defines what this post represents — the frontend renders it accordingly'),
 
                                 Select::make('status')
                                     ->options([
@@ -64,15 +100,17 @@ class PostForm
                                     ])
                                     ->default('published')
                                     ->required()
-                                    ->native(false),
+                                    ->native(false)
+                                    ->prefixIcon('heroicon-m-eye'),
 
                                 Textarea::make('excerpt')
                                     ->rows(3)
-                                    ->placeholder('Short summary shown in card previews. If blank, the body is used instead.')
+                                    ->placeholder('Short summary shown in card previews')
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Shown in card previews — if blank, the body is used instead')
                                     ->columnSpanFull(),
 
                                 RichEditor::make('body')
-                                    ->label('Body (Rich Text)')
+                                    ->label('Body')
                                     ->toolbarButtons([
                                         'bold', 'italic', 'underline', 'strike',
                                         'link', 'orderedList', 'bulletList',
@@ -83,7 +121,8 @@ class PostForm
                                 DateTimePicker::make('published_at')
                                     ->label('Publish at')
                                     ->native(false)
-                                    ->helperText('Leave blank to publish immediately. Set a future date to schedule.')
+                                    ->prefixIcon('heroicon-m-calendar')
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Leave blank to publish immediately — set a future date to schedule')
                                     ->columnSpanFull(),
                             ]),
 
@@ -94,13 +133,17 @@ class PostForm
                                     ->label('Featured Image')
                                     ->image()
                                     ->disk('public')
+                                    ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
+                                    ->maxSize(2048)
                                     ->imagePreviewHeight('200')
-                                    ->helperText('Shown as the card thumbnail. If no image, the icon is used instead.'),
+                                    ->panelLayout('integrated')
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Shown as the card thumbnail — if no image, the icon field is used instead'),
 
                                 TextInput::make('icon')
                                     ->maxLength(100)
+                                    ->prefixIcon('heroicon-m-star')
                                     ->placeholder('fa-star  or  ti ti-star')
-                                    ->helperText('Font Awesome or Tabler icon class. Only used when no image is set.'),
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Font Awesome or Tabler icon class — only shown when no image is set'),
                             ]),
 
                         Tab::make('Call to Action')
@@ -110,6 +153,7 @@ class PostForm
                                 TextInput::make('button_text')
                                     ->label('Button Label')
                                     ->maxLength(100)
+                                    ->prefixIcon('heroicon-m-cursor-arrow-rays')
                                     ->placeholder('Learn More'),
 
                                 Select::make('button_target')
@@ -119,12 +163,14 @@ class PostForm
                                         '_blank' => 'New tab',
                                     ])
                                     ->default('_self')
-                                    ->native(false),
+                                    ->native(false)
+                                    ->prefixIcon('heroicon-m-arrow-top-right-on-square'),
 
                                 TextInput::make('button_url')
                                     ->label('Button URL')
                                     ->url()
                                     ->maxLength(255)
+                                    ->prefixIcon('heroicon-m-link')
                                     ->placeholder('https://… or /relative-path')
                                     ->columnSpanFull(),
                             ]),
@@ -135,20 +181,26 @@ class PostForm
                             ->schema([
                                 TextInput::make('badge')
                                     ->maxLength(50)
-                                    ->placeholder('New, Popular, Featured'),
+                                    ->prefixIcon('heroicon-m-sparkles')
+                                    ->placeholder('New, Popular')
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Label shown on the card (e.g. New, Featured)'),
 
                                 TextInput::make('tag')
                                     ->maxLength(50)
-                                    ->placeholder('Used for grouping/filtering'),
+                                    ->prefixIcon('heroicon-m-hashtag')
+                                    ->placeholder('group-name')
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Used for grouping or filtering posts'),
 
                                 TextInput::make('order')
                                     ->numeric()
                                     ->default(0)
+                                    ->prefixIcon('heroicon-m-bars-3-bottom-right')
                                     ->suffix('↑↓')
-                                    ->helperText('Lower = shown first within section.'),
+                                    ->hintIcon('heroicon-m-information-circle', tooltip: 'Lower number appears first within the section'),
                             ]),
                     ])
                     ->columnSpanFull(),
+
             ]);
     }
 }

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\Sections\Pages;
+namespace App\Filament\Resources\Sliders\Pages;
 
-use App\Filament\Resources\Sections\SectionResource;
+use App\Filament\Resources\Sliders\SliderResource;
 use Filament\Actions\EditAction;
 use Filament\Resources\Pages\ViewRecord;
 
-class ViewSection extends ViewRecord
+class ViewSlider extends ViewRecord
 {
-    protected static string $resource = SectionResource::class;
+    protected static string $resource = SliderResource::class;
 
     public function hasCombinedRelationManagerTabsWithContent(): bool
     {
@@ -17,12 +17,12 @@ class ViewSection extends ViewRecord
 
     public function getContentTabLabel(): ?string
     {
-        return 'Section Details';
+        return 'Slider Settings';
     }
 
     public function getContentTabIcon(): string|\BackedEnum|\Illuminate\Contracts\Support\Htmlable|null
     {
-        return 'heroicon-o-view-columns';
+        return 'heroicon-o-photo';
     }
 
     protected function getHeaderActions(): array

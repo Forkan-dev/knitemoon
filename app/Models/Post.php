@@ -13,6 +13,7 @@ class Post extends Model
 
     protected $fillable = [
         'section_id',
+        'type',
         'title',
         'slug',
         'excerpt',

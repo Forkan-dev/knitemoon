@@ -31,8 +31,11 @@ _frontend_source/              ← original HTML reference (do not touch)
 
 ```
 PAGE
- └── belongsToMany SECTION  (via page_section pivot)
-       └── hasMany POST
+ ├── belongsTo SLIDER (nullable — hero carousel at top of page)
+ │      └── hasMany SLIDER_ITEMS  (each slide: image, heading, subheading, CTA)
+ │
+ └── belongsToMany SECTION  (via page_section pivot — content blocks below slider)
+           └── hasMany POST
 ```
 
 ---
@@ -53,7 +56,47 @@ PAGE
 
 ---
 
+## Hierarchy Rules — Slider
+
+| Rule | Behaviour |
+|---|---|
+| Page → Slider | Many-to-one (nullable `slider_id` FK on pages) |
+| Slider → SliderItems | One-to-many, cascade delete |
+| One page = one slider | A page has at most one hero slider |
+| Slider reuse | Multiple pages can share the same slider |
+| Delete Slider | Sets `pages.slider_id` to NULL (pages survive) |
+| Delete SliderItem | Only that slide is removed |
+
+---
+
 ## Database Schema
+
+### `sliders`
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint PK | |
+| name | string | required |
+| identifier | string unique nullable | Blade key |
+| autoplay | boolean | default: true |
+| autoplay_speed | unsignedInt | ms, default: 5000 |
+| effect | enum(slide,fade) | default: slide |
+| status | enum(active,inactive) | default: active |
+| created_at, updated_at | timestamps | |
+
+### `slider_items`
+| Column | Type | Notes |
+|---|---|---|
+| id | bigint PK | |
+| slider_id | FK → sliders.id | cascade delete |
+| image | string | required — full-width background image |
+| heading | string nullable | overlay headline |
+| subheading | string nullable | overlay sub-text |
+| button_text | string nullable | CTA label |
+| button_url | string nullable | CTA link |
+| button_target | string | default: `_self` |
+| order | unsignedInt | default: 0 |
+| status | enum(active,inactive) | default: active |
+| created_at, updated_at | timestamps | |
 
 ### `pages`
 | Column | Type | Notes |
@@ -65,6 +108,7 @@ PAGE
 | meta_description | text nullable | SEO meta, max 160 chars |
 | meta_keywords | string nullable | SEO keywords |
 | og_image | string nullable | Open Graph image path |
+| slider_id | FK → sliders.id nullable | set null on delete |
 | status | enum(active,inactive) | default: active |
 | order | integer | default: 0, manual sort |
 | created_at, updated_at | timestamps | |
@@ -157,10 +201,20 @@ NO page_id on sections table
 
 ## Filament Admin Resources
 
+### SliderResource — `app/Filament/Resources/Sliders/`
+- **Form:** *Slider Settings* section (name→auto-identifier, identifier, effect, status) + *Autoplay* section (toggle + speed, speed hidden when autoplay off)
+- **Table:** name, identifier, effect, autoplay icon, speed, status, slides count, pages count
+- **Edit/View layout:** combined tabs — "Slider Settings" tab + "Slides" tab
+- **Relation Manager:** `SliderItemsRelationManager`
+  - Table: slide image preview, heading + subheading description, CTA label, order, status
+  - **Add slide** → form: image upload (required), heading, subheading, CTA (button_text + url + target), order + status
+  - Rows are **reorderable** by drag in the table (uses `order` column)
+
 ### PageResource — `app/Filament/Resources/Pages/`
-- **Form:** Two sections — *Page Details* (name→auto-slug, slug, status, order) and *SEO & Open Graph* (collapsible — title, meta_description, meta_keywords, og_image)
+- **Form:** *Hero Slider* section (slider_id select — assigns an active slider to this page) + *Page Details* section (name→auto-slug, slug, status, order) + collapsible *SEO & Open Graph* section
 - **Slug:** Auto-generated from `name` on blur via `afterStateUpdated`; editable
-- **Table:** order#, name, slug (prefixed /), status badge, sections count badge, last updated
+- **Table:** order#, name, slug, slider badge, sections count badge, status, last updated
+- **Edit/View layout:** combined tabs — "Page Details" tab + "Sections" tab
 - **Filters:** status
 - **Relation Manager:** `SectionsRelationManager`
   - Table shows pivot `order`, section name, identifier, status, post count

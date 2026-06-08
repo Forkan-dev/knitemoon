@@ -29,6 +29,34 @@ class PostsTable
                     ->weight('semibold')
                     ->description(fn ($record) => $record->excerpt ? \Illuminate\Support\Str::limit($record->excerpt, 60) : null),
 
+                TextColumn::make('type')
+                    ->badge()
+                    ->color(fn ($state) => match ($state) {
+                        'team'        => 'info',
+                        'product'     => 'success',
+                        'service'     => 'primary',
+                        'feature'     => 'warning',
+                        'testimonial' => 'info',
+                        'faq'         => 'gray',
+                        'article'     => 'primary',
+                        'stat'        => 'success',
+                        'gallery'     => 'warning',
+                        default       => 'gray',
+                    })
+                    ->formatStateUsing(fn ($state) => match ($state) {
+                        'team'        => 'Team Member',
+                        'product'     => 'Product',
+                        'service'     => 'Service',
+                        'feature'     => 'Feature',
+                        'testimonial' => 'Testimonial',
+                        'faq'         => 'FAQ',
+                        'article'     => 'Article',
+                        'stat'        => 'Statistic',
+                        'gallery'     => 'Gallery',
+                        default       => 'General',
+                    })
+                    ->sortable(),
+
                 TextColumn::make('section.name')
                     ->label('Section')
                     ->badge()
@@ -67,6 +95,20 @@ class PostsTable
                     ->options([
                         'published' => 'Published',
                         'draft'     => 'Draft',
+                    ]),
+
+                SelectFilter::make('type')
+                    ->options([
+                        'general'     => 'General',
+                        'team'        => 'Team Member',
+                        'product'     => 'Product',
+                        'service'     => 'Service',
+                        'feature'     => 'Feature',
+                        'testimonial' => 'Testimonial',
+                        'faq'         => 'FAQ',
+                        'article'     => 'Article',
+                        'stat'        => 'Statistic',
+                        'gallery'     => 'Gallery',
                     ]),
 
                 SelectFilter::make('section')

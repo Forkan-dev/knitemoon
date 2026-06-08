@@ -10,6 +10,21 @@ class ViewPage extends ViewRecord
 {
     protected static string $resource = PageResource::class;
 
+    public function hasCombinedRelationManagerTabsWithContent(): bool
+    {
+        return true;
+    }
+
+    public function getContentTabLabel(): ?string
+    {
+        return 'Page Details';
+    }
+
+    public function getContentTabIcon(): string|\BackedEnum|\Illuminate\Contracts\Support\Htmlable|null
+    {
+        return 'heroicon-o-document';
+    }
+
     protected function getHeaderActions(): array
     {
         return [

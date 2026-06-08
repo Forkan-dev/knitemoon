@@ -12,6 +12,15 @@ class PageInfolist
     {
         return $schema
             ->components([
+                Section::make('Hero Slider')
+                    ->schema([
+                        TextEntry::make('slider.name')
+                            ->label('Assigned slider')
+                            ->badge()
+                            ->color('info')
+                            ->placeholder('No slider assigned'),
+                    ]),
+
                 Section::make('Page Details')
                     ->columns(2)
                     ->schema([
