@@ -12,50 +12,33 @@
     </div>
   </section>
 
-  <!-- Filter Section -->
-  <section class="section-padding bg-gray-50">
-    <div class="container-max px-4">
-      <h2 class="text-2xl font-bold mb-6">Filter by Category</h2>
-      <div class="flex flex-wrap gap-4">
-        <button class="filter-btn active px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('all')">All</button>
-        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('factory')">Factory</button>
-        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('production')">Production</button>
-        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('team')">Team</button>
-        <button class="filter-btn px-6 py-2 rounded-full font-semibold transition-all border-2" onclick="filterGallery('events')">Events</button>
-      </div>
-    </div>
-  </section>
 
   <!-- Gallery Grid -->
-  <section class="section-padding">
-    <div class="container-max px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        @php
-        $images = [
-          ['photo' => 'photo-1554224311-beee415c15e1', 'alt' => 'Factory Overview', 'cat' => 'factory'],
-          ['photo' => 'photo-1552664730-d307ca884978', 'alt' => 'Factory Interior', 'cat' => 'factory'],
-          ['photo' => 'photo-1581092918056-0c4c3acd3789', 'alt' => 'Warehouse', 'cat' => 'factory'],
-          ['photo' => 'photo-1565710041743-5e95400e9177', 'alt' => 'Production Line', 'cat' => 'production'],
-          ['photo' => 'photo-1586611338391-48e83f5e72e6', 'alt' => 'Quality Control', 'cat' => 'production'],
-          ['photo' => 'photo-1556821552-7f41c5d440db', 'alt' => 'Sewing', 'cat' => 'production'],
-          ['photo' => 'photo-1552664730-d307ca884978', 'alt' => 'Team Work', 'cat' => 'team'],
-          ['photo' => 'photo-1552664730-d307ca884978', 'alt' => 'Team Meeting', 'cat' => 'team'],
-          ['photo' => 'photo-1521572163474-6864f9cf17ab', 'alt' => 'Team Photo', 'cat' => 'team'],
-          ['photo' => 'photo-1552664730-d307ca884978', 'alt' => 'Event', 'cat' => 'events'],
-          ['photo' => 'photo-1552664730-d307ca884978', 'alt' => 'Conference', 'cat' => 'events'],
-          ['photo' => 'photo-1552664730-d307ca884978', 'alt' => 'Celebration', 'cat' => 'events'],
-        ]
-        @endphp
-        @foreach($images as $image)
-        <img src="https://images.unsplash.com/{{ $image['photo'] }}?w=400&h=300&fit=crop"
-             alt="{{ $image['alt'] }}"
-             class="gallery-img gallery-item"
-             data-category="{{ $image['cat'] }}">
-        @endforeach
-      </div>
-    </div>
-  </section>
+ <section class="section-padding">
+  <div class="container-max px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
 
+      @foreach($page->sections as $section)
+        @foreach($section->posts as $post)
+
+          <div class="gallery-item-wrapper">
+
+            <img src="{{ asset('storage/'.$post->image) }}"
+                 alt="{{ $post->title }}"
+                 class="gallery-img gallery-item w-full rounded-lg">
+
+            <h3 class="mt-3 text-lg font-semibold text-gray-800">
+              {{ $post->title }}
+            </h3>
+
+          </div>
+
+        @endforeach
+      @endforeach
+
+    </div>
+  </div>
+</section>
 @endsection
 
 @push('scripts')

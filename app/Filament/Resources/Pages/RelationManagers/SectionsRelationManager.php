@@ -21,6 +21,8 @@ class SectionsRelationManager extends RelationManager
 {
     protected static string $relationship = 'sections';
 
+    protected static ?string $recordTitleAttribute = 'name';
+
     protected static ?string $title = 'Sections';
 
     public function form(Schema $schema): Schema

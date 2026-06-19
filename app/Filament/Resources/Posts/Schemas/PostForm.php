@@ -134,7 +134,7 @@ class PostForm
                                     ->image()
                                     ->disk('public')
                                     ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                                    ->maxSize(2048)
+                                    ->maxSize(5120)
                                     ->imagePreviewHeight('200')
                                     ->panelLayout('integrated')
                                     ->hintIcon('heroicon-m-information-circle', tooltip: 'Shown as the card thumbnail — if no image, the icon field is used instead'),

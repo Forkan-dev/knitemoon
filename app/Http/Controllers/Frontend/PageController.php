@@ -33,12 +33,14 @@ class PageController extends Controller
     public function about()
     {
         $page = $this->loadPage('about');
+        // dd($page->sections);
         return view('frontend.pages.about', compact('page'));
     }
 
     public function products()
     {
         $page = $this->loadPage('products');
+        // dd($page->sections);
         return view('frontend.pages.products', compact('page'));
     }
 
@@ -49,12 +51,16 @@ class PageController extends Controller
 
     public function team()
     {
-        return view('frontend.pages.team');
+        $page = $this->loadPage('team');
+        // dd($page->sections);
+        return view('frontend.pages.team',compact('page'));
     }
 
     public function gallery()
     {
-        return view('frontend.pages.gallery');
+         $page = $this->loadPage('gallery');
+        // dd($page->sections);
+        return view('frontend.pages.gallery',compact('page'));
     }
 
     public function certifications()
@@ -65,6 +71,8 @@ class PageController extends Controller
     public function contact()
     {
         $page = $this->loadPage('contact');
+        // dd($page->sections);
+
         return view('frontend.pages.contact', compact('page'));
     }
 

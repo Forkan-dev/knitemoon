@@ -137,7 +137,7 @@ class PageForm
                             ->image()
                             ->disk('public')
                             ->acceptedFileTypes(['image/jpeg', 'image/png', 'image/webp'])
-                            ->maxSize(2048)
+                            ->maxSize(5120)
                             ->imagePreviewHeight('120')
                             ->panelLayout('integrated')
                             ->hintIcon('heroicon-m-information-circle', tooltip: 'Recommended 1200×630 px — shown when this page is shared on social media')
