@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Post;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Schema;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +22,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $logo = Post::where('title','logo')->first();
-        // dd($logo);
-       View::share('logo', $logo);
+        if (Schema::hasTable('posts')) {
+            $logo = Post::where('title', 'logo')->first();
+            View::share('logo', $logo);
+        }
     }
 }
