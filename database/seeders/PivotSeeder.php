@@ -10,11 +10,37 @@ class PivotSeeder extends Seeder
 {
     public function run(): void
     {
+        // page slug => [section identifier => order]
         $map = [
-            'home'     => ['hero' => 1, 'features' => 2, 'testimonials' => 3],
-            'about'    => ['hero' => 1, 'mission' => 2, 'team' => 3],
-            'products' => ['features' => 1],
-            'contact'  => ['contact-form' => 1, 'faq' => 2],
+            'home' => [
+                'home'               => 0, // Logo
+                'about-hero'         => 1,
+                'product'            => 2,
+                'testimonials'       => 3,
+                'about-company'      => 4,
+                'factory-highlights' => 5,
+                'gallery'            => 6,
+            ],
+            'about' => [
+                'about-hero'      => 1,
+                'our-journey'     => 2,
+                'mission'         => 3,
+                'our-core-values' => 4,
+                'contact-form'    => 5,
+            ],
+            'products' => [
+                'product' => 0,
+            ],
+            'contact' => [
+                'contact-form' => 1,
+                'faq'          => 2,
+            ],
+            'gallery' => [
+                'gallery' => 0,
+            ],
+            'team' => [
+                'tea' => 0,
+            ],
         ];
 
         foreach ($map as $pageSlug => $sectionOrders) {
