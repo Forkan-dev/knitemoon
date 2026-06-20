@@ -58,120 +58,145 @@
   </section>
 
   <!-- Featured Products Section -->
-  <section class="section-padding">
-    <div class="container-max px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 gradient-text">Featured Products</h2>
-      <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Explore our premium collection of garments manufactured with the highest quality standards</p>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        @php
-        $products = [
-          ['img' => 'photo-1521572163474-6864f9cf17ab', 'name' => 'Premium T-Shirt', 'desc' => '100% cotton, comfortable fit, multiple colors available', 'anchor' => 'tshirts'],
-          ['img' => 'photo-1556821552-7f41c5d440db', 'name' => 'Polo Shirt', 'desc' => 'Professional look, breathable fabric, durable construction', 'anchor' => 'polos'],
-          ['img' => 'photo-1556821552-7f41c5d440db', 'name' => 'Premium Hoodie', 'desc' => 'Comfortable casual wear, premium material blend', 'anchor' => 'hoodies'],
-          ['img' => 'photo-1617944052062-eeb1a8bc0ffd', 'name' => 'Denim Jacket', 'desc' => 'Classic style, durable denim, timeless design', 'anchor' => 'jackets'],
-          ['img' => 'photo-1542272604-787c62d465d1', 'name' => 'Premium Denim', 'desc' => 'High-quality fabric, perfect fit, versatile style', 'anchor' => 'denim'],
-          ['img' => 'photo-1539533057440-7814a9d4aeb9', 'name' => 'Sports Wear', 'desc' => 'Athletic performance, moisture-wicking fabric', 'anchor' => 'sports'],
-        ]
-        @endphp
-        @foreach($products as $product)
+   <!-- Featured Products Section -->
+<section class="section-padding">
+  <div class="container-max px-4">
+
+    <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 gradient-text">
+      Featured Products
+    </h2>
+
+    <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+      Explore our premium collection of garments manufactured with the highest quality standards
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+      @foreach($page->sections[2]->posts as $post)
         <div class="product-card rounded-lg overflow-hidden card-shadow bg-white">
-          <img src="https://images.unsplash.com/{{ $product['img'] }}?w=400&h=300&fit=crop" alt="{{ $product['name'] }}" class="w-full h-48 object-cover">
+
+          <img src="{{ Storage::url($post->image) }}" class="w-full h-48 object-contain bg-gray-50">
+
           <div class="p-6">
-            <h3 class="text-xl font-bold text-blue-900 mb-2">{{ $product['name'] }}</h3>
-            <p class="text-gray-600 text-sm mb-4">{{ $product['desc'] }}</p>
-            <a href="{{ route('products') }}#{{ $product['anchor'] }}" class="text-blue-900 font-semibold hover:text-green-800">View Details →</a>
+            <h3 class="text-xl font-bold text-blue-900 mb-2">
+              {{ $post->title }}
+            </h3>
+
+            <p class="text-gray-600 text-sm mb-4">
+              {!! $post->body !!}
+            </p>
+
+            <a href="{{ route('products') }}#product-{{ $post->id }}"
+               class="text-blue-900 font-semibold hover:text-green-800">
+              View Details →
+            </a>
           </div>
+
         </div>
-        @endforeach
-      </div>
-      <div class="text-center mt-12">
-        <a href="{{ route('products') }}" class="btn-primary">Browse All Products</a>
-      </div>
+      @endforeach
+
     </div>
-  </section>
+
+    <div class="text-center mt-12">
+      <a href="{{ route('products') }}" class="btn-primary">
+        Browse All Products
+      </a>
+    </div>
+
+  </div>
+</section>
 
   <!-- About Preview Section -->
-  <section class="section-padding bg-gray-50">
-    <div class="container-max px-4">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div>
-          <img src="https://images.unsplash.com/photo-1554224311-beee415c15e1?w=500&h=400&fit=crop" alt="About Factory" class="rounded-lg card-shadow w-full h-96 object-cover">
-        </div>
-        <div>
-          <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">About Our Company</h2>
-          <p class="text-gray-600 mb-4">With over 20 years of experience in textile manufacturing, we've established ourselves as a trusted partner for global brands.</p>
-          <p class="text-gray-600 mb-6">Our state-of-the-art facilities and skilled workforce ensure that every product meets the highest international standards.</p>
-          <div class="grid grid-cols-2 gap-4 mb-8">
-            <div class="bg-white p-4 rounded-lg card-shadow">
-              <p class="text-3xl font-bold text-blue-900">50+</p>
-              <p class="text-gray-600 text-sm">Countries Served</p>
+@php
+    $aboutSection = $page->sections->firstWhere('identifier', 'about-company');
+@endphp
+
+@if($aboutSection && $aboutSection->posts->count())
+    @foreach($aboutSection->posts as $post)
+
+        <section class="section-padding bg-gray-50">
+            <div class="container-max px-4">
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch">
+
+                    <!-- Image -->
+                    <div>
+                        <img src="{{ Storage::url($post->image) }}"
+                             alt="{{ $post->title }}"
+                             class="rounded-lg card-shadow w-full h-96 object-cover">
+                    </div>
+
+                    <!-- Content -->
+                    <div class="flex flex-col h-full">
+
+                        <h2 class="text-3xl md:text-4xl font-bold gradient-text mb-6">
+                            {{ $post->title }}
+                        </h2>
+
+                        <p class="text-gray-600 mb-4">
+                            {!! $post->body !!}
+                        </p>
+
+                        <!-- Button always at bottom -->
+                        <div class="mt-auto">
+                            <a href="{{ route('about') }}" class="btn-primary">
+                                Learn More
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
-            <div class="bg-white p-4 rounded-lg card-shadow">
-              <p class="text-3xl font-bold text-blue-900">500+</p>
-              <p class="text-gray-600 text-sm">Global Clients</p>
-            </div>
-          </div>
-          <a href="{{ route('about') }}" class="btn-primary">Learn More</a>
-        </div>
-      </div>
-    </div>
-  </section>
+        </section>
+
+    @endforeach
+@endif
 
   <!-- Factory Highlights Section -->
-  <section class="section-padding">
-    <div class="container-max px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Factory Highlights</h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        @php
-        $highlights = [
-          ['img' => 'photo-1565710041743-5e95400e9177', 'title' => 'Production Capacity', 'desc' => '500,000+ units per month with full quality control', 'badge' => '✓ State-of-the-art machinery'],
-          ['img' => 'photo-1586611338391-48e83f5e72e6', 'title' => 'Quality Control', 'desc' => 'Strict testing at every production stage', 'badge' => '✓ International standards compliance'],
-          ['img' => 'photo-1552664730-d307ca884978', 'title' => 'Export Compliance', 'desc' => 'Certified for global export requirements', 'badge' => '✓ Full traceability & documentation'],
-        ]
-        @endphp
-        @foreach($highlights as $h)
-        <div class="rounded-lg overflow-hidden card-shadow bg-white">
-          <img src="https://images.unsplash.com/{{ $h['img'] }}?w=400&h=250&fit=crop" alt="{{ $h['title'] }}" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-xl font-bold text-blue-900 mb-2">{{ $h['title'] }}</h3>
-            <p class="text-gray-600 mb-3">{{ $h['desc'] }}</p>
-            <p class="text-sm text-green-700 font-semibold">{{ $h['badge'] }}</p>
-          </div>
-        </div>
-        @endforeach
-      </div>
-    </div>
-  </section>
 
-  <!-- Management Team Section -->
-  <section class="section-padding bg-gray-50">
+
+ @php
+    $factorySection = $page->sections->firstWhere('identifier', 'factory-highlights');
+@endphp
+
+@if($factorySection && $factorySection->posts->count())
+<section class="section-padding">
     <div class="container-max px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Management Team</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-        @php
-        $team = [
-          ['img' => 'photo-1507003211169-0a1dd7228f2d', 'name' => 'Ahmed Hassan', 'role' => 'Managing Director', 'exp' => '20+ years industry experience'],
-          ['img' => 'photo-1494790108377-be9c29b29330', 'name' => 'Fatima Amin', 'role' => 'Operations Director', 'exp' => 'Quality & compliance expert'],
-          ['img' => 'photo-1507003211169-0a1dd7228f2d', 'name' => 'Mohammad Khan', 'role' => 'Production Manager', 'exp' => '15+ years production expertise'],
-          ['img' => 'photo-1438761681033-6461ffad8d80', 'name' => 'Sarah Ahmed', 'role' => 'Export Manager', 'exp' => 'Global logistics specialist'],
-        ]
-        @endphp
-        @foreach($team as $member)
-        <div class="team-card text-center bg-white rounded-lg overflow-hidden card-shadow">
-          <img src="https://images.unsplash.com/{{ $member['img'] }}?w=300&h=300&fit=crop" alt="{{ $member['name'] }}" class="w-full h-48 object-cover">
-          <div class="p-6">
-            <h3 class="text-lg font-bold text-blue-900">{{ $member['name'] }}</h3>
-            <p class="text-green-700 font-semibold text-sm mb-2">{{ $member['role'] }}</p>
-            <p class="text-gray-600 text-sm">{{ $member['exp'] }}</p>
-          </div>
+
+        <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">
+            Factory Highlights
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            @foreach($factorySection->posts as $post)
+                <div class="rounded-lg overflow-hidden card-shadow bg-white">
+                    <img
+                        src="{{ Storage::url($post->image) }}"
+                        alt="{{ $post->title }}"
+                        class="w-full h-48 object-cover"
+                    >
+
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-blue-900 mb-2">
+                            {{ $post->title }}
+                        </h3>
+
+                        <p class="text-gray-600">
+                            {!! $post->body !!}
+                        </p>
+                    </div>
+                </div>
+            @endforeach
+
         </div>
-        @endforeach
-      </div>
-      <div class="text-center mt-12">
-        <a href="{{ route('team') }}" class="btn-secondary">View Full Team</a>
-      </div>
+
     </div>
-  </section>
+</section>
+@endif
+
 
   <!-- Certification Section -->
   <section class="section-padding">
@@ -202,19 +227,37 @@
   </section>
 
   <!-- Gallery Section -->
-  <section class="section-padding bg-gray-50">
+  @php
+    $gallerySection = $page->sections->firstWhere('identifier', 'gallery');
+@endphp
+
+@if($gallerySection && $gallerySection->posts->count())
+<section class="section-padding bg-gray-50">
     <div class="container-max px-4">
-      <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">Gallery</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-        @foreach(['photo-1554224311-beee415c15e1','photo-1565710041743-5e95400e9177','photo-1586611338391-48e83f5e72e6','photo-1552664730-d307ca884978','photo-1556821552-7f41c5d440db','photo-1521572163474-6864f9cf17ab'] as $photo)
-        <img src="https://images.unsplash.com/{{ $photo }}?w=400&h=300&fit=crop" alt="Gallery" class="rounded-lg card-shadow w-full h-64 object-cover hover:scale-105 transition-transform duration-300">
-        @endforeach
-      </div>
-      <div class="text-center">
-        <a href="{{ route('gallery') }}" class="btn-secondary">View Full Gallery</a>
-      </div>
+
+        <h2 class="text-3xl md:text-4xl font-bold text-center gradient-text mb-12">
+            Gallery
+        </h2>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+            @foreach($gallerySection->posts as $post)
+                <img
+                    src="{{ Storage::url($post->image) }}"
+                    alt="{{ $post->title }}"
+                    class="rounded-lg card-shadow w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                >
+            @endforeach
+        </div>
+
+        <div class="text-center">
+            <a href="{{ route('gallery') }}" class="btn-secondary">
+                View Full Gallery
+            </a>
+        </div>
+
     </div>
-  </section>
+</section>
+@endif
 
   <!-- Contact CTA Section -->
   <section class="section-padding bg-gradient-to-r from-blue-900 to-green-800">

@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ isset($page) && $page->title ? $page->title : '' }}@yield('title', 'TextileExport Pro - Premium Garments Manufacturing')</title>
+  <!-- <title>{{ isset($page) && $page->title ? $page->title : '' }}@yield('title', 'TextileExport Pro - Premium Garments Manufacturing')</title> -->
   <meta name="description" content="{{ isset($page) && $page->meta_description ? $page->meta_description : '' }}@yield('meta_description', 'Leading textile and garments manufacturer with ISO, BSCI, WRAP, and OEKO-TEX certifications. Export quality products worldwide.')">
-  @if(isset($page) && $page->og_image)<meta property="og:image" content="{{ Storage::disk('public')->url($page->og_image) }}">@endif
+  @if(isset($page) && $page->og_image)
+  <meta property="og:image" content="{{ Storage::disk('public')->url($page->og_image) }}">@endif
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
@@ -17,9 +19,26 @@
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
       transition-duration: 300ms;
     }
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Inter', system-ui, sans-serif; background-color: white; color: #111827; }
-    h1, h2, h3, h4, h5, h6 { font-family: 'Poppins', system-ui, sans-serif; font-weight: bold; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background-color: white;
+      color: #111827;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'Poppins', system-ui, sans-serif;
+      font-weight: bold;
+    }
 
     .btn-primary {
       padding: 0.75rem 2rem;
@@ -27,10 +46,14 @@
       color: white;
       font-weight: 600;
       border-radius: 0.5rem;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
       transition: all 300ms;
     }
-    .btn-primary:hover { background-color: #0d4d2e; box-shadow: 0 10px 15px rgba(0,0,0,0.15); }
+
+    .btn-primary:hover {
+      background-color: #0d4d2e;
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+    }
 
     .btn-secondary {
       padding: 0.75rem 2rem;
@@ -41,10 +64,18 @@
       border: 2px solid #001f3f;
       transition: all 300ms;
     }
-    .btn-secondary:hover { background-color: #f3f4f6; }
 
-    .card-shadow { box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-    .card-shadow:hover { box-shadow: 0 20px 25px rgba(0,0,0,0.15); }
+    .btn-secondary:hover {
+      background-color: #f3f4f6;
+    }
+
+    .card-shadow {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-shadow:hover {
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    }
 
     .gradient-text {
       background: linear-gradient(135deg, #001f3f 0%, #0d4d2e 100%);
@@ -53,62 +84,191 @@
       background-clip: text;
     }
 
-    .section-padding { padding: 4rem 1rem; }
-    @media (min-width: 768px) { .section-padding { padding: 5rem 2rem; } }
+    .section-padding {
+      padding: 4rem 1rem;
+    }
 
-    .container-max { max-width: 80rem; margin-left: auto; margin-right: auto; }
+    @media (min-width: 768px) {
+      .section-padding {
+        padding: 5rem 2rem;
+      }
+    }
 
-    nav { position: sticky; top: 0; z-index: 50; background-color: white; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+    .container-max {
+      max-width: 80rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
 
-    .product-card { transition: transform 300ms; border-radius: 0.5rem; overflow: hidden; background-color: white; }
-    .product-card:hover { transform: translateY(-8px); }
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background-color: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-    .team-card { transition: all 300ms; border-radius: 0.5rem; overflow: hidden; background-color: white; }
-    .team-card:hover { transform: translateY(-8px); box-shadow: 0 25px 50px rgba(0,0,0,0.15); }
+    .product-card {
+      transition: transform 300ms;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: white;
+    }
 
-    .cert-badge { transition: transform 300ms; }
-    .cert-badge:hover { transform: scale(1.1); }
+    .product-card:hover {
+      transform: translateY(-8px);
+    }
 
-    .gallery-img { border-radius: 0.5rem; box-shadow: 0 4px 6px rgba(0,0,0,0.1); width: 100%; height: 16rem; object-fit: cover; cursor: pointer; transition: transform 300ms; }
-    .gallery-img:hover { transform: scale(1.05); box-shadow: 0 20px 25px rgba(0,0,0,0.15); }
+    .team-card {
+      transition: all 300ms;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: white;
+    }
 
-    .filter-btn { padding: 0.5rem 1rem; background-color: #f3f4f6; color: #001f3f; border: 2px solid transparent; border-radius: 9999px; font-weight: 500; cursor: pointer; transition: all 300ms; }
-    .filter-btn:hover, .filter-btn.active { background-color: #001f3f; color: white; border-color: #0d4d2e; }
+    .team-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+    }
 
-    .slide { transition: opacity 500ms; }
-    .slide.hidden { display: none; }
+    .cert-badge {
+      transition: transform 300ms;
+    }
+
+    .cert-badge:hover {
+      transform: scale(1.1);
+    }
+
+    .gallery-img {
+      border-radius: 0.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      height: 16rem;
+      object-fit: cover;
+      cursor: pointer;
+      transition: transform 300ms;
+    }
+
+    .gallery-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      background-color: #f3f4f6;
+      color: #001f3f;
+      border: 2px solid transparent;
+      border-radius: 9999px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 300ms;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background-color: #001f3f;
+      color: white;
+      border-color: #0d4d2e;
+    }
+
+    .slide {
+      transition: opacity 500ms;
+    }
+
+    .slide.hidden {
+      display: none;
+    }
 
     .slider-btn {
-      position: absolute; top: 50%; transform: translateY(-50%); z-index: 20;
-      background-color: rgba(0,31,63,0.8); color: white; width: 3rem; height: 3rem;
-      display: flex; align-items: center; justify-content: center;
-      border-radius: 9999px; border: none; cursor: pointer; transition: all 300ms; font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 20;
+      background-color: rgba(0, 31, 63, 0.8);
+      color: white;
+      width: 3rem;
+      height: 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      border: none;
+      cursor: pointer;
+      transition: all 300ms;
+      font-size: 1.5rem;
     }
-    .slider-btn:hover { background-color: #0d4d2e; }
-    .slider-btn.prev-btn { left: 1rem; }
-    .slider-btn.next-btn { right: 1rem; }
-    @media (min-width: 768px) { .slider-btn.prev-btn { left: 2rem; } .slider-btn.next-btn { right: 2rem; } }
 
-    .light-gray { background-color: #f5f5f5; }
-    .text-balance { text-wrap: balance; }
+    .slider-btn:hover {
+      background-color: #0d4d2e;
+    }
 
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-    .animate-fade-in { animation: fadeIn 0.6s ease-out; }
-    [data-animate] { opacity: 0; animation: fadeIn 0.6s ease-out forwards; }
+    .slider-btn.prev-btn {
+      left: 1rem;
+    }
+
+    .slider-btn.next-btn {
+      right: 1rem;
+    }
+
+    @media (min-width: 768px) {
+      .slider-btn.prev-btn {
+        left: 2rem;
+      }
+
+      .slider-btn.next-btn {
+        right: 2rem;
+      }
+    }
+
+    .light-gray {
+      background-color: #f5f5f5;
+    }
+
+    .text-balance {
+      text-wrap: balance;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in {
+      animation: fadeIn 0.6s ease-out;
+    }
+
+    [data-animate] {
+      opacity: 0;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
   </style>
   @stack('styles')
 </head>
+
 <body>
 
   <!-- Navigation -->
   <nav class="border-b border-gray-200">
     <div class="container-max flex items-center justify-between py-4 px-4">
       <a href="{{ route('home') }}" class="flex items-center gap-2">
-        <div class="w-10 h-10 bg-gradient-to-br from-blue-900 to-green-800 rounded-lg flex items-center justify-center">
-          <span class="text-white font-bold text-lg">TE</span>
-        </div>
-        <span class="text-xl font-bold text-blue-900">TextileExport Pro</span>
-      </a>
+    <img src="{{ Storage::url($logo->image) }}"
+         alt="{{ strip_tags($logo->body) }}"
+         class="h-10 w-auto">
+
+    <span class="text-xl font-bold text-blue-900">
+        {!! $logo->body !!}
+    </span>
+</a>
+
+
 
       <!-- Desktop Menu -->
       <div class="hidden md:flex gap-8">
@@ -150,7 +310,7 @@
   <footer class="bg-blue-900 text-white py-12">
     <div class="container-max grid grid-cols-1 md:grid-cols-4 gap-8 mb-8 px-4">
       <div>
-        <h3 class="text-lg font-bold mb-4">TextileExport Pro</h3>
+        <h3 class="text-lg font-bold mb-4">{!! $logo->body !!}</h3>
         <p class="text-gray-300 text-sm mb-4">Leading textile manufacturer with global reach and premium quality.</p>
         <div class="flex gap-4">
           <a href="#" class="text-gray-300 hover:text-white transition-colors"><i class="fab fa-facebook"></i></a>
@@ -208,4 +368,5 @@
     });
   </script>
 </body>
+
 </html>

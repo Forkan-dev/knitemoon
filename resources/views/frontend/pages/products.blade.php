@@ -28,7 +28,7 @@
 
         <img src="{{ asset('storage/'.$post->image) }}"
           alt="{{ $post->title }}"
-          class="w-full h-60 object-cover">
+          class="w-full h-60 object-contain bg-gray-50">
 
         <div class="p-6">
 

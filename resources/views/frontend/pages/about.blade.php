@@ -64,14 +64,12 @@
 <!-- Values -->
 <section class="section-padding bg-gray-50">
   <div class="container-max px-4">
-    <h2 class="text-3xl font-bold text-center gradient-text mb-12">{{ $page->sections[3]->name }}</h2>
+    <h2 class="text-3xl font-bold text-center gradient-text mb-12">About Our Company</h2>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       @foreach($page->sections[3]->posts as $post)
       <div class="bg-white p-8 rounded-lg card-shadow">
-        <div class="text-4xl mb-4">✓</div>
-        <h3 class="text-xl font-bold text-blue-900 mb-3">{{ $post->title }}
-        </h3>
-        <p class="text-gray-600"> {!! $post->body !!} </p>
+        
+        <p class="text-gray-600"> 20+ Years of Excellence in Textile Manufacturing </p>
       </div>
       @endforeach
 

@@ -24,9 +24,13 @@ class PageController extends Controller
             ->firstOrFail();
     }
 
+    
+
+
     public function home()
     {
         $page = $this->loadPage('home');
+        // dd($page->sections);
         return view('frontend.pages.home', compact('page'));
     }
 
