@@ -1,10 +1,10 @@
-*
-!.gitignore
-!*/
-!*.jpg
-!*.jpeg
-!*.png
-!*.webp
-!*.gif
-!*.svg
-!*.avif
+# *
+# !.gitignore
+# !*/
+# !*.jpg
+# !*.jpeg
+# !*.png
+# !*.webp
+# !*.gif
+# !*.svg
+# !*.avif
